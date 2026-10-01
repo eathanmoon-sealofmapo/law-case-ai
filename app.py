@@ -6,12 +6,12 @@ from google.genai import types
 
 # ----------------- 페이지 기본 설정 -----------------
 st.set_page_config(
-    page_title="AI 판례 분석 어시스턴트",
+    page_title="물개사무장의 AI 판례 분석 어시스턴트",
     page_icon="⚖️",
     layout="centered"
 )
 
-st.title("⚖️ AI 판례 기반 법률 어시스턴트")
+st.title("⚖️ AI 판례 기반 법률 물개 사무장 어시스턴트")
 st.caption("국가법령정보센터 실제 대법원 판례를 실시간으로 검색하여 법률 분석을 제공합니다.")
 
 # ----------------- API 키 로드 -----------------
