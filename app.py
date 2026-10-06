@@ -190,4 +190,27 @@ if st.button("🔍 관련 판례 즉시 검색", type="primary", use_container_w
             
             ---
             ## 💡 요약 및 실무적 시사점
-            - 위
+            - 위 판례들이 공통적으로 제시하는 판단 기준(예: 과실비율 산정 시 주시의무, 안전거리 확보 여부 등)
+            - 질문 상황에서 참고해야 할 핵심 포인트
+            
+            [실제 판례 데이터]:
+            {prec_text}
+            """
+            
+            res = client.models.generate_content(
+                model="gemini-3.5-flash-lite",
+                contents=summary_prompt,
+                config=types.GenerateContentConfig(temperature=0.2)
+            )
+
+        st.markdown(res.text)
+
+        with st.expander("🔎 수집된 실제 판례 원문(판시사항·판결요지) 확인"):
+            for item in prec_payload:
+                m = item["meta"]
+                c = item["content"]
+                st.markdown(f"#### 🏛️️ {m['court_name']} {m['case_no']} ({m['case_name']})")
+                st.markdown(f"**선고일자:** {m['judge_date']}")
+                st.markdown(f"**【판시사항】**\n\n{c['holding']}")
+                st.markdown(f"**【판결요지】**\n\n{c['summary']}")
+                st.divider()
